@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Aktivacija naloga - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="activate-account-container">
+        <div class="logo-container">
+            <img src="../../../assets/logo 0.png">
+        </div>
+        <mat-card>
+            <div class="container-fluid" style="margin:0">
+                <div class="row">
+                    <div class="col-sm-6" >
+                        <mat-card-title>Aktivirajte svoj nalog</mat-card-title>
+                        <mat-card-subtitle>Unesite pin koji je poslat na vas email {{email}}</mat-card-subtitle>
+                        <mat-card-subtitle>Niste dobili pin? Kliknite na opciju za ponovno slanje.</mat-card-subtitle>
+                        <br>
+                        <mat-card-content>
+                            <form [formGroup]="form" (ngSubmit)="submit()">
+            
+                                <p>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Pin</mat-label>
+                                        <input type="text" matInput placeholder="****" formControlName="pin" required minlength="4" maxlength="4" pattern="^[0-9]+$">
+                                        <span *ngIf="form.controls['pin'].touched && form.controls['pin'].invalid">
+                                            Pin se sastoji od cetiri broja.
+                                        </span>
+                                    </mat-form-field>
+                                </p>
+            
+                                <p *ngIf="(error)" class="error">
+                                    {{error}}
+                                </p>
+                                <button type="submit" mat-button id="submit-button">Potvrdi</button>
+                            </form>
+                            <br>
+                            <button mat-button (click)="sendPinAgain()">Pošalji pin ponovo</button>
+                        </mat-card-content>
+                        <br><br>
+                    </div>
+                
+                    <div class="col-sm-6" >
+                        <mat-card-title>Unijeli ste email koji nije vaš?</mat-card-title>
+                        <br>
+                        <mat-card-content>
+                            <form [formGroup]="formForEmailChanging" (ngSubmit)="changeEmail()">
+                
+                                <p>
+                                    <mat-form-field>
+                                        <mat-label>Novi email</mat-label>
+                                        <input type="email" matInput placeholder="email@example.com" formControlName="newEmail" 
+                                                required pattern="^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$">
+                                    </mat-form-field>
+                                    <button mat-button type="submit">Sačuvaj email</button>
+                                </p> 
+                                
+                                <p *ngIf="successResponse" class="success">
+                                    {{successResponse}}
+                                </p>
+                            </form>
+                        </mat-card-content>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</body>
+</html>

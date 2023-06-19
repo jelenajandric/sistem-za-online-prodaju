@@ -1,0 +1,93 @@
+.buying-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-width: 20vmax;
+  min-height: 100vh;
+}
+
+mat-card {
+  max-width: 75vh;
+  min-width: 20vmax;
+  background-color: #adc5d7;
+
+}
+  
+mat-card-content {
+  display: flexbox;
+  justify-content: center;
+}
+
+mat-form-field {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  min-width: 17vmax;
+}
+
+mat-card-title {
+  font-size: larger;
+  display: flex;
+  justify-items: center;
+  word-wrap: break-word;
+  max-width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+mat-card-subtitle {
+  font-size: large;
+  display: flex;
+  justify-items: center;
+  word-wrap: break-word;
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.card-num {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #7d9eb8;
+}
+
+img {
+  margin-top: 20px;
+  align-self: center;
+  max-width: 80%;
+}
+
+.error {
+  padding: 16px;
+  color: red;
+  text-align: center;
+  text-decoration: solid;
+  font-size: medium;
+}
+
+.place-for-button {
+  justify-content: center;
+  display: flex;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.change-product-state {
+  color: red !important;
+  font-size: 1em;
+}

@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Prikaz klijenta - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div class="show-client-container"> 
+        <div class="app-toolbar" style="width: 100%;">
+            <app-webshop-toolbar [isLoggedIn]="isLoggedIn()"></app-webshop-toolbar>
+        </div>
+        <div class="container-fluid" style="margin:0px">
+            <div class="row">
+                <div class="col-sm-3 client-info-col">
+                    <div class="client-info-container sticky-on-top">
+                        <div class="client-img-wrap">	
+                            <div *ngIf="clientInfo?.avatar; then withImage else withoutImage" >
+                            </div>
+                            <ng-template #withImage>
+                                <img mat-card-image [src]="clientInfo?.avatar" class="client-img" style="border-radius: 50%;">
+                            </ng-template> 
+                            <ng-template #withoutImage>
+                                <img mat-card-image src="./../../../assets/default-avatar.jpg" class="client-img">
+                            </ng-template>
+                        </div>
+                        <p class="client-name">
+                            {{clientInfo?.name}} &nbsp; {{clientInfo?.surname}}
+                        </p>
+                        <br>
+                        <p class="other-client-info">
+                            <mat-icon>place</mat-icon> {{clientInfo?.city}}
+                            <br>
+                            <br>
+                            <mat-icon>email</mat-icon> {{clientInfo?.email}}
+                        </p>
+                    </div> 
+                </div> 
+
+
+                <div class="col-sm-9 right" style="padding: 0px;">
+
+                    <div class="column-container" fxFlex>
+                        <div class="options  sticky-on-top" style="background-color: rgb(191, 196, 208); padding: 0px;">
+                            <mat-tab-group (selectedTabChange)="changedTab($event)" animationDuration="0ms">
+                                <mat-tab label="Aktivni" ></mat-tab>
+                                <mat-tab label="Završeni" ></mat-tab>
+                            </mat-tab-group>
+                        </div>
+                        <div class="products-content">
+                            <app-show-all-products [filter]="filter"></app-show-all-products>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="main-content" fxFlex>
+                            <div class="content">
+                                <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+                                    <mat-card fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)" *ngFor="let element of showProducts">
+                                        <a [href]="['http://localhost:4200/products/'+ element.id]" class="mat-card-product-a">
+                                            <mat-card-title>{{element.title}}</mat-card-title>
+                                        </a>
+                                        <div *ngIf="element.image; then withImage else withoutImage" >
+                                        </div>
+                                        <ng-template #withImage>
+                                            <img mat-card-image class="image" [src]="element.image">
+                                        </ng-template> 
+                                        <ng-template #withoutImage>
+                                            <img mat-card-image ngSrc="./../../../assets/default.png" width="250px" height="250px">
+                                        </ng-template>                                      
+                                        <mat-card-content>
+                                            <p>
+                                            Cijena: {{element.price}} 
+                                            
+                                            </p>
+                                            <p>
+                                                Lokacija: {{element.location}}
+                                            </p>
+            
+                                        </mat-card-content>
+                                        <img class="close" src="../../../assets/close.png" (click)="deleteProduct(element.id)" />
+                                        <div *ngIf="showingAvailableProducts; then changeToSold else changeToAvailable">
+                                        </div>
+                                        <ng-template #changeToSold>
+                                            <button class="change-product-state" mat-button (click)="changeProductToSold(element.id)" id="button2">Oznaci kao nedostupan</button>
+                                        </ng-template>
+                                        <ng-template #changeToAvailable>
+                                            <button class="change-product-state" mat-button (click)="changeProductToAvailable(element.id)" id="button2">Oznaci kao dostupan</button>
+                                        </ng-template>                                      
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </div>  -->

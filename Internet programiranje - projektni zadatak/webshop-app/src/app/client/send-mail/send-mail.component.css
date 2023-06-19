@@ -1,0 +1,63 @@
+.send-mail-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 25vmax;
+}
+ 
+mat-card {
+  max-width: 100%;
+  min-width: 25vmax;
+  background-color: #adc5d7;
+
+}
+
+mat-form-field {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+mat-card-title {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+mat-card-content {
+  display: flexbox;
+  justify-content: center;
+}
+
+button {
+  width: 20%;
+  height: 40%;
+  background-color: #7d9eb8;
+}
+
+img {
+  align-self: center;
+  max-width: 90%;
+}
+
+.error {
+  padding: 16px;
+  color: red;
+  text-align: center;
+  text-decoration: solid;
+  font-size: medium;
+}
+
+.place-for-button {
+  justify-content: center;
+  display: flex;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+

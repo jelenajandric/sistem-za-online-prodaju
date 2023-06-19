@@ -1,0 +1,70 @@
+mat-toolbar {
+    background-color: #adc5d7 !important;
+    
+    height: 80px !important;
+}
+
+/* .add-new-product-button:hover {
+
+} */
+
+.toolbar-container  {
+    min-width: 30vw;
+}
+
+.app-name {
+    text-decoration: unset;
+    color: white;
+    font-weight: 1000;
+}
+
+mat-sidenav {
+    background-color: #adc5d7 !important;
+/* background: #7d9eb8 !important; */
+}
+
+.toolbar-item-spacer {   
+    flex: 1 1 auto;
+}
+
+.title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.font-p {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+.actions-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.login-button, .registration-button {
+    font-size: 1rem;
+}
+
+/* @media (max-width< 576px) {
+    .my-too {
+        min-height: 120px !important;
+    }
+
+    .title, .actions-container {
+        justify-content: center;
+    }
+} */
+
+@media (max-width: 599px) {
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 100px;
+}
+.actions-container {
+    justify-content: left;
+}
+}

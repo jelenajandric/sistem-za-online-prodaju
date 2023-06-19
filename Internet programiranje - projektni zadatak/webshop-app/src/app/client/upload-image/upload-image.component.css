@@ -1,0 +1,83 @@
+.upload-avatar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-width: 30vmax;
+  min-height: 100vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+mat-card {
+  max-width: 100%;
+  min-width: 25vmax;
+  background-color: #adc5d7;
+}
+
+mat-form-field {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+mat-card-title {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+mat-card-content {
+  display: flexbox;
+  justify-content: center;
+}
+
+div.image {
+  display: inline;
+}
+
+button {
+  background-color: #7d9eb8;
+}
+
+.img-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.image-place {
+  display: flex;
+  justify-content: center;
+}
+
+.uploaded-image {
+  align-self: center;
+  max-width: 90%;
+  min-width: 25vmax;
+}
+
+.place-for-button {
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 5%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+  align-self: center;
+  max-width: 55vh;
+  min-width: 22vmax;
+}
+
+  

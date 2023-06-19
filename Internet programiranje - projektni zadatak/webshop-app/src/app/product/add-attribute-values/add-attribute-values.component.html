@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dodajte dodatne informacije o proizvodu - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="add-atributte-values-container">
+    <mat-card>
+        <mat-card-title>Dodajte dodatne informacije o prozivodu</mat-card-title>
+        <mat-card-content>
+            <div class="logo-container">
+                <img src="../../../assets/logo 0.png">
+            </div>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div *ngFor="let attr of attributes">
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>{{attr}}</mat-label>
+                            <input type="text" matInput placeholder={{attr}} formControlName={{attr}} required minlength="1" 
+                                    pattern="[a-zA-Z0-9 ]*">
+                        </mat-form-field>
+                        <span *ngIf="form.controls[attr].touched && form.controls[attr].invalid">
+                            Vrijednost atributa moze da sadrzi slova, brojeve i razmake.
+                        </span>
+                    </p>
+                </div>
+                <p *ngIf="(error)" class="error">
+                    {{error}}
+                </p>
+                <br>
+                <div class="place-for-button">
+                    <button type="submit" mat-button>Sljedeći korak...</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+</body>
+</html>

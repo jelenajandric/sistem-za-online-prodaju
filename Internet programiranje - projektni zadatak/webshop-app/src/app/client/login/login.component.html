@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Prijavi se - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="login-container">
+    <mat-card  class="z-depth center">
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="logo-container">
+                    <img src="../../../assets/logo 0.png">
+                </div>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Korisničko ime</mat-label>
+                        <input style="width: 100%" name="username" type="text" matInput placeholder="Korisničko ime" 
+                                        formControlName="username" required minlength="6" 
+                                        pattern="^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"> 
+                    </mat-form-field>
+                    <span *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
+                        Korisnicko ime mora da ima minimalno sest, a maksimalno 20 slova. Moze da sadrzi slova, brojeve '_' i '.' bez razmaka. Znakovi se ne mogu naci na kraju i pocetku te jedan pored drugog.
+                    </span>
+                </p>
+                
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Lozinka</mat-label>
+                        <input matInput placeholder="Lozinka" [type]="hide ? 'password' : 'text'" 
+                        formControlName="password" required minlength="8">
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </mat-form-field>
+                    <span *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+                        Lozinka mora da ima minimalno osam slova.
+                    </span>
+                </p>
+                <p *ngIf="(error)" class="error">
+                    {{error}}
+                </p>
+                
+                <div class="place-for-button">
+                    <button class="submit-button"  type="submit" mat-button>Prijavi se</button>
+                </div>
+                <br>
+                <a [href]="['http://localhost:4200/clients/registration']">
+                    Nemate nalog? Registrujte se>>>
+                </a>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+</body>
+</html>

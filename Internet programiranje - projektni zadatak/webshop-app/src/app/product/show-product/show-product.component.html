@@ -1,0 +1,157 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Proizvod</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="show-product-container">
+        <div class="app-toolbar" style="width: 100%;">
+            <app-webshop-toolbar [isLoggedIn]="isLoggedIn()"></app-webshop-toolbar>
+        </div>
+        <div class="column-container" *ngIf="product">
+            <h1 class="prdouct-name-h1" >{{product.title}}</h1>
+            <h1 class="product-price-h1">{{product.price}} KM</h1>
+        </div>
+        <div class="main-image" *ngIf="product?.images.length>0">
+            <a mat-card-image [href]="product.images[0].image" data-lightbox="examplee-set" data-title="Kliknite bilo gdje oko slike ili na 'x' da biste zatvorili.">
+                <img class="first-image" [src]="product.images[0].image" alt="" />
+            </a>
+        </div>
+        <div *ngIf="product?.images.length>0" class="all-images-container" id="scroll">
+            <div class="div_to_hold_images" *ngFor="let img of product.images">
+                <a mat-card-image [href]="img.image" data-lightbox="example-set" data-title="Kliknite bilo gdje oko slike ili na 'x' da biste zatvorili.">
+                    <img class="all-images" [src]="img.image" alt="" />
+                </a>
+            </div>
+        </div>
+        <div class="main-info" *ngIf="product">
+            <mat-icon>place</mat-icon>{{product.location}}     
+            <mat-icon>call</mat-icon>{{product.contact}}  
+            <mat-icon>local_offer</mat-icon>{{product.new? "Novo" : "Polovno"}}   
+            <a (click)="getSellerInfo()">
+                <mat-icon title="Kliknite za vise informacija o korisniku.">person</mat-icon>
+                <span>{{product.clientUsernameSelling}}</span>
+            </a>
+        </div>
+
+        <div class="container-fluid" style="margin:0px">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div *ngFor="let av of product?.attributesAndValues | keyvalue | slice:0:(attributeValuesSize==2?1:(attributeValuesSize/2+1))">
+                        <div class="attributes-and-values">
+                            <p>{{av.key}}</p>
+                            <p>{{av.value}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div *ngFor="let av of product?.attributesAndValues | keyvalue | slice:(attributeValuesSize==2?1:(attributeValuesSize/2+1)):(attributeValuesSize)">
+                        <div class="attributes-and-values">
+                            <p>{{av.key}}</p>
+                            <p>{{av.value}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="product?.description">
+            <div class="description-container">
+                <div class="description" *ngIf="product">
+                    <p>
+                        {{product.description}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div *ngIf="isLoggedIn()">
+            <div class="container-fluid" *ngIf="isLoggedUserSeller()">
+                <div class="row">
+                    <div class="col-sm-4 change-product-state-container">
+                        <button class="change-product-state" *ngIf="product?.isSold!=true" mat-button (click)="changeProductToSold(product.id)">Oznaci kao kupljen</button>
+                        <button class="change-product-state" *ngIf="product?.isSold" mat-button (click)="changeProductToAvailable(product.id)">Oznaci kao dostupan</button>
+                    </div>
+                    <div class="col-sm-4 update-button-container">
+                        <button  *ngIf="!product?.isSold" class="update-button" mat-button (click)="updateThisProduct(product.id)" id="button2">Azuriraj ovaj proizvod</button>
+                    </div>
+                    <div class="col-sm-4 delete-button-container">
+                        <button class="delete-button" mat-button (click)="deleteProduct(product.id)">Obrisi</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="buy-button-container" *ngIf="!isLoggedUserSeller() && !product?.isSold">
+                <button *ngIf="!product?.isSold" class="buy-button" mat-button (click)="buyThisProduct(product.id)" id="button2">Kupi odmah</button>
+            </div>
+        </div>
+
+
+        <div class="comments-container">
+            <div class="be-comment-block" *ngIf="comments">
+                <h1 class="comments-title">Komentari ({{comments.length}})</h1>
+                <div *ngFor="let comment of comments; let i = index">
+                    <div class="be-comment">
+                        <div class="be-img-comment">	
+                            <div *ngIf="comment.clientAvatar; then withImage else withoutImage" >
+                            </div>
+                            <ng-template #withImage>
+                                <img mat-card-image [src]="comment.clientAvatar" class="be-ava-comment">
+                            </ng-template> 
+                            <ng-template #withoutImage>
+                                <img mat-card-image src="./../../../assets/default-avatar.jpg" class="be-ava-comment">
+                            </ng-template>
+                        </div>
+                        <div class="be-comment-content">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="be-comment-name">
+                                            <a href="">{{comment.clientName}} &nbsp; {{comment.clientSurname}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="be-comment-time">
+                                            <i class="fa fa-clock-o"></i>
+                                            <button class="delete-comment" mat-button (click)="deleteComment(comment.id)" id="button2">Obriši komentar</button>
+                                            {{comment.time}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="be-comment-text">
+                                {{comment.content}}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <br>
+                <form class="form-block" [formGroup]="form" (ngSubmit)="addComment()">
+                    <div class="col-xs-12">									
+                        <div class="form-group">
+                            <mat-form-field appearance="fill">
+                                <textarea matInput  cdkTextareaAutosize
+                                #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="3"
+                                cdkAutosizeMaxRows="5" placeholder="Komentarisi ili postavi pitanje..." formControlName="commentContent"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <br>
+                    <p *ngIf="(error)" class="error">
+                        {{error}}
+                    </p>
+                    <br>
+                    <button class="submit-comment-button" type="submit" mat-button>Objavi komentar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload avatar - ETFBL_IP</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="upload-avatar-container">
+        <mat-card>
+            <mat-card-title>Dodajte svoju profilnu fotografiju</mat-card-title>
+            <br>
+            <div class="logo-container">
+                <img id="logo" src="../../../assets/logo 0.png">
+            </div>
+            <br>
+            <mat-card-content class="upload-photo-mat">
+                <form [formGroup]="form" (ngSubmit)="nextStep()">
+                    <div>
+                        <input type="file" style="width:100%" (change)="onImageUpload($event)">
+                        <br>
+                        <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1">
+                    </div>
+                    
+                    <div>
+                        <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
+                    </div>
+                    <br>
+                    <div class="place-for-button">
+                        <button type="submit" mat-button>Sljedeći korak</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <br>
+        <div class="img-wrap">
+            <div class="image-place" *ngIf=dbImage>
+                <img class="uploaded-image" [src]="dbImage">
+            </div>
+            <img *ngIf="dbImage" class="close" src="../../../assets/close.png" (click)="deleteImage()" />
+        </div>
+    </div>
+</body>
+</html>

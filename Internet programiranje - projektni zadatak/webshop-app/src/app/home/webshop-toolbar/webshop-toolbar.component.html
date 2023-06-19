@@ -1,0 +1,57 @@
+<div class="toolbar-container">
+<mat-toolbar color="primary" class="my-too">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 title">
+                <a [href]="['http://localhost:4200/home']" class="app-name">
+                    ETFBL_IP webshop
+                </a>
+            </div>
+            <div class="col-sm-6 actions-container">
+                <a [href]="['http://localhost:4200/products/add-new']">
+                    <button mat-icon-button matTooltip="Dodaj novi proizvof" title="Dodaj novi proizvod" class="add-new-product-button">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+                </a>
+                
+                <div *ngIf="isLoggedIn; else notLoggedIn">
+                    <button mat-icon-button matTooltip="Moj nalog" title="Moj nalog" [matMenuTriggerFor]="userAccountMenu">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+            
+                    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+                        <button mat-menu-item (click)="showMyAccount()">
+                            <mat-icon>person</mat-icon><span>Moj nalog</span>
+                        </button>
+                        <button mat-menu-item (click)="updateAccount()">
+                            <mat-icon>settings</mat-icon><span>Azuriraj svoj nalog</span>
+                        </button>
+                        <button mat-menu-item (click)="sendMailToTehnicalSupport()">
+                            <mat-icon>help</mat-icon><span>Obrati se tehinckoj podrsci</span>
+                        </button>
+                        <mat-divider></mat-divider>
+                        <button mat-menu-item (click)="logOut()">
+                            <mat-icon>exit_to_app</mat-icon>Odjavi se
+                        </button>
+                    </mat-menu>
+                </div>
+                <ng-template #notLoggedIn>
+                    <div>
+                        <button class="login-button" mat-button (click)="login()">
+                            Prijavi se
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="registration-button" mat-button (click)="registration()">
+                            Registruj se
+                        </button>
+                    </div>
+
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</mat-toolbar>
+</div>

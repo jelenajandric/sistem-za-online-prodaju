@@ -1,0 +1,65 @@
+.add-new-product-container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  min-width: 20vmax;
+  min-height: 130vh;
+}
+
+mat-card {
+  max-width: 60vh;
+  min-width: 20vmax;
+  justify-self: center;
+  background-color: #adc5d7;
+}
+
+mat-form-field {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+
+mat-card-content {
+  display: flexbox;
+  justify-content: center;
+}
+
+fieldset {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+button {
+  background-color: #7d9eb8;
+}
+
+img {
+  align-self: center;
+  max-width: 90%;
+}
+
+.error {
+  padding: 16px;
+  color: red;
+  text-align: center;
+  text-decoration: solid;
+  font-size: medium;
+}
+
+.place-for-button {
+  justify-content: center;
+  display: flex;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}

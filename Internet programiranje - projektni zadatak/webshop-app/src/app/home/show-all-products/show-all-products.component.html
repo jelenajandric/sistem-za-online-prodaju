@@ -1,0 +1,36 @@
+<div class="main-content" fxFlex>
+    <div class="content">
+        <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+            <mat-card fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)" *ngFor="let element of products">
+                <a [href]="['http://localhost:4200/products/'+ element.id]" class="mat-card-product-a">
+                    <mat-card-title>{{element.title}}</mat-card-title>
+                
+                    <div *ngIf="element.image; then withImage else withoutImage" >
+                    </div>
+                
+                        <ng-template #withImage>
+                            <div class="client-image-wrapper">
+                                <img mat-card-image class="image" [src]="element.image">
+                            </div> 
+                        </ng-template> 
+                        <ng-template #withoutImage>
+                            <div class="client-image-wrapper">
+                                <img mat-card-image src="./../../../assets/default.png" width="250px" height="250px">
+                            </div>
+                        </ng-template>
+                </a>                           
+                <mat-card-content>
+                    <p>
+                    Cijena: {{element.price}} KM
+                    
+                    </p>
+                    <p>
+                        Lokacija: {{element.location}}
+                    </p>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+<mat-paginator style="background-color: #cdcdcd;" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements" (page)="nextPage($event)"> </mat-paginator>
+</div>

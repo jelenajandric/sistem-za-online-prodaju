@@ -1,0 +1,83 @@
+.show-client-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.sticky-on-top {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 80px;
+    z-index: 1000;
+}
+
+.client-info-col {
+    background-color: #adc5d7;
+    min-height: 100vh;
+}
+
+.client-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #adc5d7; 
+    border: 0px; 
+}
+
+.options {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.client-username {
+    font-size: 20px;
+    color: red;
+}
+
+.client-img-wrap {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.client-img {
+    max-width: 90%;
+    height: 100%;
+    border-radius: 50%;
+    display: flexbox;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+}
+
+.client-name {
+    font-size:1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.other-client-info {
+    font-size:1.3vmax;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+@media (max-width: 577px) {
+    .client-info-col{
+        min-width: 29vmax;
+    }
+}

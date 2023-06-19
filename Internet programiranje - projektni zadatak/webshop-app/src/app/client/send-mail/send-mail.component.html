@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pošalji poruku tehničkoj podršci - ETFBL_IP</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="send-mail-container">
+    <mat-card>
+        <mat-card-title>Uočili ste problem ili imate neko pitanje? Pošaljite poruku tehničkoj podršci!</mat-card-title>
+        <div class="logo-container">
+            <img src="../../../assets/logo 0.png">
+        </div>
+        <mat-card-content>
+            <form [formGroup]="form" (ngSubmit)="sendMail()">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sadržaj poruke</mat-label>
+                        <textarea matInput  cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="5"
+                        cdkAutosizeMaxRows="8" placeholder="Sadrzaj poruke" formControlName="content" minlength="3"></textarea>
+                    </mat-form-field>
+                </p>
+
+                <p *ngIf="(error)" class="error">
+                    {{error}}
+                </p>
+
+                <div class="place-for-button">
+                    <button class="submit-button"  type="submit" mat-button>Pošalji</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+</body>
+</html>

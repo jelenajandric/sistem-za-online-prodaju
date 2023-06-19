@@ -1,0 +1,47 @@
+.content {
+  background-color: #cdcdcd;
+  padding-top: 5px;
+}
+
+.mat-card-product-a {
+    color: black;
+}
+mat-card {
+  margin-bottom: 10px;
+  justify-content: center;
+}
+  
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.image {
+  max-width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+mat-card-content {
+  display: flexbox;
+  justify-content: center;
+}
+
+mat-card-title {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.client-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}

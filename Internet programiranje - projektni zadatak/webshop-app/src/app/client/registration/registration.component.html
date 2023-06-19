@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Registracija - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="registration-container">
+    <mat-card>
+        <mat-card-title>Dobrodošli na WebShop ETFBL_IP! Registrujte se da biste imali dodatne mogućnosti.</mat-card-title>
+        <mat-card-content>
+            <div class="logo-container">
+                <img src="../../../assets/logo 0.png">
+            </div>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ime</mat-label>
+                        <input type="text" matInput placeholder="Ime" formControlName="name" 
+                                        required minlength="3" maxlength="20" pattern="^[a-zA-Z ]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['name'].touched && form.controls['name'].invalid">
+                        Ime moze da se sastoji od minimalno tri, a maksimalno 20 slova. Ime moze da sadzri samo slova i razmake.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Prezime</mat-label>
+                        <input type="text" matInput placeholder="Prezime" formControlName="surname" 
+                                    required minlength="3" maxlength="20" pattern="^[a-zA-Z ]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['surname'].touched && form.controls['surname'].invalid">
+                        Prezime moze da se sastoji od minimalno tri, a maksimalno 20 slova. Prezime moze da sadzri samo slova i razmake.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Korisničko ime</mat-label>
+                        <input type="text" matInput placeholder="Korisničko ime" formControlName="username" 
+                                    [readonly]="isAddMode?false:true" required minlength="6" 
+                                    pattern="^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
+                        Korisnicko ime mora da ima minimalno sest, a maksimalno 20 slova. Moze da sadrzi slova, brojeve '_' i '.' bez razmaka. Znakovi se ne mogu naci na kraju i pocetku te jedan pored drugog.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Lozinka</mat-label>
+                        <input matInput placeholder="Lozinka" [type]="hide ? 'password' : 'text'" formControlName="password" required minlength="8">
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </mat-form-field>
+                    <span *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+                        Lozinka mora da ima minimalno osam slova.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Grad</mat-label>
+                        <input type="text" matInput placeholder="Grad" formControlName="city" required minlength="2" maxlength="50" pattern="^[a-zA-Z ]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['city'].touched && form.controls['city'].invalid">
+                        Grad mora da ima minimalno tri, a maksimalno 50 slova. Moze da se sastoji od slova i razmaka.
+                    </span>
+                </p> <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="email@example.com" formControlName="email" required 
+                                pattern="^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+                        Morate ispravan unijeti email.
+                    </span>
+                </p>
+                <p *ngIf="(error)" class="error">
+                    {{error}}
+                </p>
+                <div class="place-for-button">
+                    <button class="submit-button" type="submit" mat-button>Sljedeći korak...</button>
+                </div>
+                <br>
+                <a [href]="['http://localhost:4200/clients/login']">
+                    Vec imate nalog? Prijavite se>>>
+                </a>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+</body>
+</html>

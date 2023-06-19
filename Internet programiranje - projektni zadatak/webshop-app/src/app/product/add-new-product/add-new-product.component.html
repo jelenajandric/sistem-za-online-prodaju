@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dodavanje novog proizvoda - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="add-new-product-container">
+    <mat-card>
+        <mat-card-content>
+            <div class="logo-container">
+                <img src="../../../assets/logo 0.png">
+            </div>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Naziv proizvoda</mat-label>
+                        <input type="text" matInput placeholder="Naziv proizvoda" formControlName="title" minlength="3" maxlength="50"
+                                    pattern="^[a-zA-Z0-9 ,.'-]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['title'].touched && form.controls['title'].invalid">
+                        Naziv moze da se sastoji od minimalno tri, a maksimalno 50 slova. Naziv moze da sadzri slova, brojeve razmake, '_', '-', i '.' .
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Opis</mat-label>
+                        <textarea matInput  cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5" placeholder="Opis" formControlName="description" required minlength="3"></textarea>
+                    </mat-form-field>
+                    <span *ngIf="form.controls['description'].touched && form.controls['description'].invalid">
+                        Morate dodati opis proizvoda.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cijena</mat-label>
+                        <input type="text" matInput placeholder="Cijena" formControlName="price" required minlength="1" pattern="^[0-9]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['price'].touched && form.controls['price'].invalid">
+                        Cijena se sastoji samo od brojeva.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <fieldset>Odaberite stanje proizvoda</fieldset>
+                        <mat-select formControlName="isNew" [compareWith]="compareCategoryObjects" required>
+                        <mat-option value="Nov">
+                            Nov
+                        </mat-option>
+                        <mat-option value="Polovan">
+                            Polovan
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span *ngIf="form.controls['isNew'].touched && form.controls['isNew'].invalid">
+                        Morate izabrati stanje proizvoda.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Lokacija</mat-label>
+                        <input type="text" matInput placeholder="Lokacija" formControlName="location" required 
+                                minlength="3" maxlength="40" pattern="^[a-zA-Z0-9 ,.'-]+$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['location'].touched && form.controls['location'].invalid">
+                        Lokacija moze da sadrzi slova, brojeve, razmake i '.', '-'
+                    </span>
+                </p> <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Kontakt</mat-label>
+                        <input type="text" matInput placeholder="Kontakt" formControlName="contact" required
+                                pattern="^^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,6}$">
+                    </mat-form-field>
+                    <span *ngIf="form.controls['contact'].touched && form.controls['contact'].invalid">
+                        Unesite ispravan broj telefona.
+                    </span>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill">
+                        <fieldset>Kategorija</fieldset>
+                        <mat-select formControlName="category"  [compareWith]="compareCategoryObjects" required>
+                          <mat-option matInput *ngFor="let category of categories" [value]="category.name">
+                            {{category.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <span *ngIf="form.controls['category'].touched && form.controls['category'].invalid">
+                        Morate izabrati kategoriju.
+                    </span>
+                </p>
+                <p *ngIf="(error)" class="error">
+                    {{error}}
+                </p>
+
+                <div class="place-for-button">
+                    <button class="submit-button" type="submit" mat-button>Sljedeći korak...</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+</body>
+</html>

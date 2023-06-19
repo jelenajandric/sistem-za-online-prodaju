@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload images - ETFBL_IP</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="upload-images-container">
+        <mat-card id="upload-images-mat-card">
+            <mat-card-title>Dodajte fotografije za ovaj prizvod</mat-card-title>
+            <br>
+            <div class="logo-container">
+                <img id="logo" src="../../../assets/logo 0.png">
+            </div>
+            <br>
+            <mat-card-content class="upload-photo-mat">
+                <form [formGroup]="form" (ngSubmit)="endAddingProduct()">
+                    <div>
+                        <input type="file" style="width:100%" (change)="onImageUpload($event)">
+                        <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1">
+                    </div>
+                       
+                    <div>
+                        <output *ngIf=successResponse class="success"><b>{{successResponse}}</b></output>
+                    </div>
+                    <br>
+                    <div class="place-for-button">
+                        <button type="submit" mat-button>Završi proces dodavanja</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <br>
+        <div class="images-wrap">
+            <div class="all-images">
+                <div fxLayout="row wrap" fxLayoutGap="16px grid" style="justify-content: center;">
+                  <div class="img-wrp" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)" *ngFor="let img of allImagesWithId">
+                    <mat-card class="mat-elevation-z4" >
+                        <a mat-card-image [href]="img.image" data-lightbox="example-set" data-title="Kliknite bilo gdje oko slike ili na 'x' da biste zatvorili.">
+                            <img class="uploaded-image" [src]="img.image" alt=""  width="250px"/>
+                        </a>
+                        <img class="close" src="../../../assets/close.png" (click)="deleteImage(img.id)" />
+                    </mat-card>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

@@ -1,0 +1,32 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.form-control {
+    width: 90%;
+}
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center
+}
+
+.text-warning {
+    display: flex;
+    justify-content: center;
+}
+
+h5 {
+    color: red;
+}
+
+.delete-submit-button {
+    display: flex;
+    justify-content: center
+}

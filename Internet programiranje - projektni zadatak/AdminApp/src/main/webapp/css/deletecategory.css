@@ -1,0 +1,35 @@
+h5 {
+    color: red;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-group {
+    width: 50vw;
+}
+
+.text-warning {
+    display: flex;
+    justify-content: center
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.delete-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}

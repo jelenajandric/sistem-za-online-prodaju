@@ -1,0 +1,46 @@
+body { 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #cdcdcd;
+}
+
+.reply-message-container {
+	display: flex;
+	justify-content:center;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	min-height:300px;
+	align-items: center;
+	
+}
+
+.message-wrapper {
+	display: flex;
+	justify-content:center;
+	background-color: lightsteelblue;
+	min-width: 40vw;
+	max-width: 800px;
+	padding: 8px;
+	word-break:break-all;
+	flex-direction:column;
+}
+
+p {
+	font-weight:bold;
+}
+
+textarea {
+	min-width: 20vw;
+	max-width:795px;
+	max-height:200px;
+	font-size:15px;
+}
+
+form {
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+}

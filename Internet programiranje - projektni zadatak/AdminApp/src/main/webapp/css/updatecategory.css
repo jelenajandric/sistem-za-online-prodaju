@@ -1,0 +1,35 @@
+h5 {
+    color: red;
+}
+
+.form-group {
+    width: 50vw;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.forms-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn {
+    margin-top:8px;
+}
+
+.attribute-name-input {
+    width: 200px;
+    height: 28px;
+    font-size: 20px;
+}
+
+.submit-button-wrapper {
+    display: flex;
+    justify-content: center;
+}

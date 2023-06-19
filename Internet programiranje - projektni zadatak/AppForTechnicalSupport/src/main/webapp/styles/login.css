@@ -1,0 +1,32 @@
+body { 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #cdcdcd;
+}
+.login-wrapper {
+	border: 3px;
+	display:flex; 
+	justify-content:center;
+	flex-direction:column; 
+	flex-wrap:wrap; 
+	align-items:center; 
+	height:80vh;
+}
+
+form {
+	min-width: 200px;
+}
+
+.input-data {
+	min-width: 200px;
+	min-height: 30px;
+	font-size: 22px;
+}
+
+.submit-input {
+	min-width: 95px;
+	min-height: 25px;
+}
+.button-wrapper, .notification-wrapper {
+	display: flex;
+	justify-content:center;
+}

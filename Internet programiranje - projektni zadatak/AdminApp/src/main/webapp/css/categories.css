@@ -1,0 +1,11 @@
+h5 {
+    color: red;
+}
+
+.categories-container {
+    margin:10px;
+    background-color: lightgray;
+    padding: 8px; display: flex;
+    align-items: center;
+    flex-direction: column
+}
